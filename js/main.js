@@ -25,8 +25,8 @@ const getRandomInteger = (a, b) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-const createComment = (index) => ({
-  id: index + 1,
+const createComment = (indexx) => ({
+  id: indexx + 1,
   avatar: `img/avatar-${ getRandomInteger(1, 6) } .svg`,
   message: `${getRandomArrayElement(messageCommentator)}`,
   name: `${getRandomArrayElement(nameCommentator)}`,
@@ -37,7 +37,7 @@ const createUsers = (index) => ({
   url: `photos/${ index + 1 }.jpg` ,
   description: `${getRandomArrayElement(description)}`,
   likes: getRandomInteger(1, 200),
-  comments: Array.from({ length: getRandomInteger(1, 30) }, createComment),
+  comments: Array.from({ length: getRandomInteger(1, 30) }, (__, indexx) => createComment(indexx)),
 });
 const finalMas = Array.from({length:count}, (__, index) => createUsers(index));
 
